@@ -1,4 +1,4 @@
 # listdir
-Create a list the files of your current working directory
+Create a list of the files in your current working directory
 
 This project was created for Jason.
