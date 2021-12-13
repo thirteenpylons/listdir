@@ -24,34 +24,30 @@ def main():
 def get_files():
 	files = [f for f in os.listdir('.') if os.path.isfile(f)]
 	print(sorted(files))
-	wfile = open('my_files.txt', 'wt')
-	wfile.write(str(sorted(files)))
-	wfile.close()
+	with open('my_files.txt', 'wt') as wfile:
+		wfile.write(str(sorted(files)))
 
 
 def append_file():
 	rfile = open('./my_files.txt', 'rt')
-	afile = open('./my_files.txt', 'at')
-	for line in rfile:
-		afile.write(line.replace(',', '\n'))
-	rfile.close()
-	afile.close()
+	with open('./my_files.txt', 'at') as afile:
+		for line in rfile:
+			afile.write(line.replace(',', '\n'))
+		rfile.close()
 
 
 def editFile():
 	"""
 	Find the first close of square bracket and remove up to it
 	"""
-	src_file = open('./my_files.txt', 'rt')
-	cp_file = src_file.read()
-	src_file.close()
+	with open('./my_files.txt', 'rt') as src_file:
+		cp_file = src_file.read()
 	locate = ']'
 	find_end = cp_file.find(locate)
 	slc = cp_file[find_end+1:]
-	
-	wfile = open('./my_files.txt', 'wt')
-	wfile.write(slc)
-	wfile.close()
+
+	with open('./my_files.txt', 'wt') as wfile:
+		wfile.write(slc)
 
 
 if __name__ == '__main__':
